@@ -1,0 +1,18 @@
+package com.elotech.elobooks.enums;
+
+public enum Categoria {
+	FICCAOCIENTIFICA,
+	ROMANCE,
+	FANTASIA,
+	TERROR,
+	SUSPENSE,
+	AVENTURA,
+	DRAMA,
+	POESIA,
+	CONTOS,
+	INFANTIL,
+	HISTORIA,
+	GEOGRAFIA,
+	AUTOAJUDA,
+	CULINARIA
+}
