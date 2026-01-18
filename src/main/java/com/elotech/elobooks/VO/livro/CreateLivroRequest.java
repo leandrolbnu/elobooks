@@ -6,7 +6,6 @@ import com.elotech.elobooks.enums.Categoria;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 
 public record CreateLivroRequest(
 		@NotBlank(message = "Título é obrigatório")
@@ -16,7 +15,6 @@ public record CreateLivroRequest(
 		String autor,
 
 		@NotNull(message = "ISBN é obrigatório")
-		@Positive(message = "ISBN deve ser um número positivo")
 		Integer isbn,
 
 		@NotNull(message = "Data de publicação é obrigatória")
