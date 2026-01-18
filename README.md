@@ -23,11 +23,9 @@ A aplicação roda localmente via Docker. Cada execução cria um ambiente isola
 Passos para rodar o backend:
 
 1. Você precisará do GIT para fazer o clone do projeto: 
-git clone https://github.com/leandrolbnu/elobooks
+git clone https://github.com/leandrolbnu/elobooks.git
 
-2. Abra um cmd e digite:
-cd <caminho do projeto clonado>
-docker compose up --build
+2. Na pasta raíz do projeto, abra um cmd e digite: docker compose up --build
 
 3. Aguarde inicializar os containers, que irá iniciar o PostgreSQL, executará as migrations do Flyway e por fim subirá a aplicação SpringBoot. 
 
