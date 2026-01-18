@@ -26,6 +26,7 @@ Passos para rodar o backend:
 git clone https://github.com/leandrolbnu/elobooks.git
 
 2. Na pasta raíz do projeto, abra um cmd e digite: docker compose up --build
+Observação: Se for executar em sistema operacional Windows, abrir o Docker Desktop antes.
 
 3. Aguarde inicializar os containers, que irá iniciar o PostgreSQL, executará as migrations do Flyway e por fim subirá a aplicação SpringBoot. 
 
