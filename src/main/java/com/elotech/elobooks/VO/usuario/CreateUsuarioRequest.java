@@ -7,5 +7,5 @@ import jakarta.validation.constraints.Pattern;
 public record CreateUsuarioRequest(
         @NotBlank String nome,
         @Email @NotBlank String email,
-        @Pattern(regexp = "^(\\(?\\d{2}\\)?\\s?)?(9?\\d{4})-?\\d{4}$\r\n") @NotBlank String telefone
+        @Pattern(regexp = "^(\\(?\\d{2}\\)?\\s?)?(9?\\d{4})-?\\d{4}$") @NotBlank String telefone
 ) {}
