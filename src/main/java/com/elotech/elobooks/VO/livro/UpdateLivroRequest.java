@@ -1,7 +1,5 @@
 package com.elotech.elobooks.VO.livro;
 
-import java.time.LocalDateTime;
-
 import com.elotech.elobooks.enums.Categoria;
 
 import jakarta.validation.constraints.NotBlank;
@@ -15,10 +13,10 @@ public record UpdateLivroRequest(
 		String autor,
 
 		@NotNull(message = "ISBN é obrigatório")
-		Integer isbn,
+		String isbn,
 
 		@NotNull(message = "Data de publicação é obrigatória")
-		LocalDateTime dataPublicacao,
+		String dataPublicacao,
 
 		@NotNull(message = "Categoria é obrigatória")
 		Categoria categoria

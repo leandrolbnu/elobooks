@@ -9,7 +9,7 @@ import com.elotech.elobooks.enums.Categoria;
 
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 	
-	boolean existsByIsbn(Integer isbn);
+	boolean existsByIsbn(String isbn);
 	
 	List<Livro> findAllByIdIn(List<Long> idsLivrosEmprestados);
 	

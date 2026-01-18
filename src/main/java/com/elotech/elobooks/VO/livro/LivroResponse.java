@@ -8,7 +8,7 @@ public record LivroResponse(
         Long id,
         String titulo,
         String autor,
-        Integer isbn,
+        String isbn,
         LocalDateTime dataPublicacao,
         Categoria categoria
 ) {}

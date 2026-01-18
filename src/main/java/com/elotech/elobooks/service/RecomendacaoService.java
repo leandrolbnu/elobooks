@@ -20,7 +20,7 @@ public class RecomendacaoService {
         this.emprestimoService = emprestimoService;
     }
 
-    public List<Livro> findAllById(Long id){
+    public List<Livro> findAllByUsuarioId(Long id){
     	List<Emprestimo> emprestimos = emprestimoService.findAllByUsuarioId(id);
     	
     	List<Long> idsLivrosEmprestados = emprestimos.stream()

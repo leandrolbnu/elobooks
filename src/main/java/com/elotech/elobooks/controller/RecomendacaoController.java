@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.elotech.elobooks.VO.recomendacao.RecomendacaoResponse;
+import com.elotech.elobooks.VO.livro.LivroResponse;
 import com.elotech.elobooks.entity.Livro;
 import com.elotech.elobooks.service.RecomendacaoService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/recomendacao")
-@Tag(name = "Recomendação", description = "Recomendação de livros")
+@RequestMapping("/api/recomendacoes")
+@Tag(name = "Recomendações", description = "Recomendação de livros")
 public class RecomendacaoController {
 	private final RecomendacaoService service;
 	
@@ -24,12 +24,12 @@ public class RecomendacaoController {
 	}
 	
 	@GetMapping("/{id}")
-	public RecomendacaoResponse findById(@PathVariable("id") Long id) {
-		return toResponse(service.findAllById(id));	
-	}
-
-	private RecomendacaoResponse toResponse(List<Livro> livros) {
-		return new RecomendacaoResponse(livros);
+	public List<LivroResponse> findAllByUsuarioId(@PathVariable("id") Long id) {
+		return service.findAllByUsuarioId(id).stream().map(this::toResponse).toList();
 	}
 	
+	private LivroResponse toResponse(Livro livro) {
+		return new LivroResponse(livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getIsbn(),
+				livro.getDataPublicacao(), livro.getCategoria());
+	}
 }

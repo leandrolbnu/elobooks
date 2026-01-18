@@ -71,7 +71,7 @@ class EmprestimoServiceTest {
                 1L,
                 "Nome Livro Teste",
                 "Autor Teste",
-                1234,
+                "1234",
                 LocalDateTime.now(),
                 Categoria.TERROR
         );

@@ -35,13 +35,13 @@ public class LivroController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public LivroResponse create(@Valid @RequestBody CreateLivroRequest request) {
-		Livro livro = service.create(request.titulo(), request.autor(), request.isbn(), request.dataPublicacao(), request.categoria());
+		Livro livro = service.create(request.titulo(), request.autor(), request.isbn(), service.parseDate(request.dataPublicacao()), request.categoria());
 		return toResponse(livro);
 	}
 
 	@PutMapping("/{id}")
 	public LivroResponse update(@PathVariable("id") Long id, @Valid @RequestBody UpdateLivroRequest request) {
-		Livro livro = service.update(id, request.titulo(), request.autor(), request.isbn(), request.dataPublicacao(), request.categoria());
+		Livro livro = service.update(id, request.titulo(), request.autor(), request.isbn(), service.parseDate(request.dataPublicacao()), request.categoria());
 		return toResponse(livro);
 	}
 
@@ -55,15 +55,15 @@ public class LivroController {
 		return toResponse(service.findById(id));
 	}
 
-	private LivroResponse toResponse(Livro livro) {
-		return new LivroResponse(livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getIsbn(),
-				livro.getDataPublicacao(), livro.getCategoria());
-	}
-
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable("id") Long id) {
 		service.delete(id);
+	}
+	
+	private LivroResponse toResponse(Livro livro) {
+		return new LivroResponse(livro.getId(), livro.getTitulo(), livro.getAutor(), livro.getIsbn(),
+				livro.getDataPublicacao(), livro.getCategoria());
 	}
 
 }

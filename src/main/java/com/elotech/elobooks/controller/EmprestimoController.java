@@ -50,8 +50,8 @@ public class EmprestimoController {
 	}
 
 	@GetMapping("/{id}")
-	public EmprestimoResponse findById(@PathVariable("id") Long id) {
-		return toResponse(service.findById(id));
+	public List<EmprestimoResponse> findAllByUsuarioId(@PathVariable("id") Long id) {
+		return service.findAllByUsuarioId(id).stream().map(this::toResponse).toList();
 	}
 
 	private EmprestimoResponse toResponse(Emprestimo emprestimo) {

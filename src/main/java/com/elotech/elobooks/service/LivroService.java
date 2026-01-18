@@ -1,6 +1,8 @@
 package com.elotech.elobooks.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -25,7 +27,7 @@ public class LivroService {
         this.emprestimoRepository = emprestimoRepository;
     }
 
-    public Livro create(String titulo, String autor, Integer isbn, LocalDateTime dataPublicacao, Categoria categoria) {
+    public Livro create(String titulo, String autor, String isbn, LocalDateTime dataPublicacao, Categoria categoria) {
         if (repository.existsByIsbn(isbn)) {
             throw new DuplicateResourceException("Livro já cadastrado.");
         }
@@ -34,7 +36,7 @@ public class LivroService {
         return repository.save(livro);
     }
     
-    public Livro update(Long id, String titulo, String autor, Integer isbn, LocalDateTime dataPublicacao, Categoria categoria) {
+    public Livro update(Long id, String titulo, String autor, String isbn, LocalDateTime dataPublicacao, Categoria categoria) {
     	Livro livro = findById(id);
     	Livro livroAtualizado = new Livro(livro.getId(), titulo, autor, isbn, dataPublicacao, categoria);
 
@@ -66,6 +68,10 @@ public class LivroService {
         
         emprestimoRepository.deleteByLivroId(id);
         repository.deleteById(id);
+    }
+    
+    public LocalDateTime parseDate(String date) {
+    	return LocalDate.parse("2026-01-18", DateTimeFormatter.ofPattern("yyyy-MM-dd")).atStartOfDay();
     }
 
 }

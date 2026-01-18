@@ -48,7 +48,7 @@ class LivroServiceTest {
                 1L,
                 "Nome Livro Teste",
                 "Autor Teste",
-                1234,
+                "1234",
                 LocalDateTime.now(),
                 Categoria.TERROR
         );
@@ -164,11 +164,11 @@ class LivroServiceTest {
         when(repository.save(any(Livro.class))).thenAnswer(invocation -> invocation.getArgument(0));
         
         LocalDateTime dataPublicacao = LocalDateTime.parse("2023-09-12T14:30:00");
-        Livro livroAtualizado = service.update(1L, "Nome Livro Teste", "Autor Teste", 1234, dataPublicacao, Categoria.AVENTURA);
+        Livro livroAtualizado = service.update(1L, "Nome Livro Teste", "Autor Teste", "1234", dataPublicacao, Categoria.AVENTURA);
 
         assertEquals("Nome Livro Teste", livroAtualizado.getTitulo());
         assertEquals("Autor Teste", livroAtualizado.getAutor());
-        assertEquals(1234, livroAtualizado.getIsbn());
+        assertEquals("1234", livroAtualizado.getIsbn());
         assertEquals(dataPublicacao, livroAtualizado.getDataPublicacao());
         assertEquals(Categoria.AVENTURA, livroAtualizado.getCategoria());
 

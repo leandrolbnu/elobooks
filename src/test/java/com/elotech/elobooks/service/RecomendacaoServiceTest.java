@@ -69,7 +69,7 @@ class RecomendacaoServiceTest {
                 1L,
                 "Nome Livro Teste",
                 "Autor Teste",
-                1234,
+                "1234",
                 LocalDateTime.now(),
                 Categoria.TERROR
         );
@@ -94,7 +94,7 @@ class RecomendacaoServiceTest {
     	
     	when(livroService.findAllByCategoria(categorias, idsLivrosEmprestados)).thenReturn(List.of(livro));
 
-        List<Livro> resultado = service.findAllById(usuario.getId());
+        List<Livro> resultado = service.findAllByUsuarioId(usuario.getId());
 
         assertNotNull(resultado);
         assertEquals(1, resultado.size());
