@@ -28,7 +28,7 @@ public class Livro {
     private String autor;
     
     @Column(nullable = false, unique = true, length = 20)
-    private String isbn;
+    private Integer isbn;
 
     @Column(name = "data_publicacao", nullable = false)
     private LocalDateTime dataPublicacao;
@@ -39,7 +39,7 @@ public class Livro {
 
     public Livro() {}
     
-    public Livro(String titulo, String autor, String isbn, LocalDateTime dataPublicacao, Categoria categoria) {
+    public Livro(String titulo, String autor, Integer isbn, LocalDateTime dataPublicacao, Categoria categoria) {
     	this.titulo = titulo;
     	this.autor = autor;
     	this.isbn = isbn;
@@ -47,7 +47,7 @@ public class Livro {
     	this.categoria = categoria;
     }
     
-    public Livro(Long id, String titulo, String autor, String isbn, LocalDateTime dataPublicacao, Categoria categoria) {
+    public Livro(Long id, String titulo, String autor, Integer isbn, LocalDateTime dataPublicacao, Categoria categoria) {
     	this.id = id;
     	this.titulo = titulo;
     	this.autor = autor;
@@ -80,11 +80,11 @@ public class Livro {
 		this.autor = autor;
 	}
 
-	public String getIsbn() {
+	public Integer getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(String isbn) {
+	public void setIsbn(Integer isbn) {
 		this.isbn = isbn;
 	}
 
