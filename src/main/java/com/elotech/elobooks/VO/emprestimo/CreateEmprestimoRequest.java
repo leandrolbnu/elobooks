@@ -4,6 +4,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 public record CreateEmprestimoRequest(
-        @NotNull @Positive Long idUsuario,
-        @NotNull @Positive Long idLivro
+		@NotNull(message = "Id do usuário é obrigatório")
+		@Positive(message = "Id do usuário deve ser um número positivo")
+        Long idUsuario,
+        
+        @NotNull(message = "Id do livro é obrigatório")
+        @Positive(message = "Id do livro deve ser um número positivo")
+        Long idLivro
 ) {}
